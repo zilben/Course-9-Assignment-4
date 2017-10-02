@@ -1,0 +1,77 @@
+---
+title: "Assignment 4 Pitch"
+author: "Lorenzo A Sanchez"
+date: "October 2, 2017"
+output: ioslides_presentation
+---
+
+<style type="text/css">
+
+body, td {
+   font-size: 11px;
+}
+code.r{
+  font-size: 11px;
+}
+pre {
+  font-size: 11px
+}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## "Predict MPG Using Top 3 Predictor Variable Values" Shiny App
+
+This simple app predicts a vehicle's MPG by using the top 3 variables as determined by the stepwise variable selection process and AIC. 
+
+## Variable selection
+
+Below is a summary of the variable selection process using the step() function on the linear model starting with all variables available from the mtcars dataset to predict MPG.
+
+The top 3 predictor variables are:
+
+1. The vehicle having manual transmission or automatic
+2. The vehicle's 1/4 mile time in seconds
+3. The vehicle's weight in 1000lbs
+
+```{r Stepwise Variable Selection, echo = FALSE, message=FALSE  , warning=FALSE, include= FALSE}
+
+data(mtcars)
+lm1 <- lm(mpg~., data = mtcars)
+s_lm1 <- step(lm1)
+summary(s_lm1)
+
+```
+
+```{r, echo = FALSE, message=FALSE  , warning=FALSE}
+summary(s_lm1)
+
+```
+
+
+## Example of model usage
+
+Below is a sample prediction as produced by the app.
+
+The inputs we will chose are:
+
+- am = 1
+- qsec = 18
+- wt = 2
+
+Predicted MPG:
+```{r cars, echo = FALSE, message=FALSE, warning=FALSE}
+
+model1pred <- predict(s_lm1, newdata = data.frame(am = 1, qsec = 18, wt = 2))
+model1pred
+
+```
+
+## Links:
+
+* Shiny App URL:  https://zilben.shinyapps.io/Week_4/
+* Shiny App site: https://www.shinyapps.io/admin/#/application/221077
+* GitHub repositoty:  https://github.com/zilben/Course-9-Assignment-4/tree/gh-pages
+* GitHub Documentation: https://zilben.github.io/Course-9-Assignment-4/index
