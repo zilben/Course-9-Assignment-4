@@ -1,0 +1,27 @@
+---
+title: "Week 4 Assignment Documentation"
+author: "Lorenzo A Sanchez"
+date: "October 2, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Documentation for "Predict MPG Using Top 3 Predictor Variable Values" Shiny App
+
+This simple app predicts a vehicle's MPG by using the top 3 variables as determined by the stepwise variable selection process and AIC. The top 3 predictor variables are:
+
+1. The vehicle having manual transmission or automatic
+2. The vehicle's 1/4 mile time in seconds
+3. The vehicle's weight in 1000lbs
+
+## How to use
+The app has 3 inputs on the left panel corresponding to the 3 predictor variables used. Once a combinatoin of input values is selected, the main panel will display the predicted MPG of the vehicle.
+
+Below are notes on each input:
+
+1. Manual transmission: 1 for Yes and 0 for No
+2. Time of 1/4 mile:  move the slider to select the time in seconds. The range of values is the actual range from the data used.
+3. Weight of vehicle:   move the slider to select the weight in 1000lbs. The range of values is also the actual range from the data used.
